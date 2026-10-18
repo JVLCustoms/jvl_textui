@@ -53,6 +53,20 @@ No framework, no ox_lib and no other resource required. Every JVL script uses it
 </tr>
 </table>
 
+## 📸 Preview
+
+<div align="center">
+<img src="assets/readme/screenshot-multikey.png" alt="Prompt with several keys" width="760"><br>
+<sub>Several actions in one prompt, each with its own key cap (long keys like Backspace fit too)</sub>
+<br><br>
+<table>
+<tr>
+<td align="center"><img src="assets/readme/screenshot-garage.png" alt="Garage prompt in Spanish" width="380"><br><sub>Garage prompt in the player's language (Spanish)</sub></td>
+<td align="center"><img src="assets/readme/screenshot-showroom.png" alt="Showroom prompt in English" width="380"><br><sub>Same style for a third-party script (English text)</sub></td>
+</tr>
+</table>
+</div>
+
 ## 🔄 How it works
 
 ```mermaid
@@ -158,7 +172,7 @@ TriggerClientEvent('jvl_textui:show', source, '[E] Talk', { duration = 4000 }) -
 
 ## 📋 Pending
 
-- [ ] Real in-game screenshots for this README.
+- [x] In-game screenshots.
 
 ---
 
