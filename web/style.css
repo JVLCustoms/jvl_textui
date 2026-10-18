@@ -1,0 +1,105 @@
+/* JVL TextUI - tokens and .jvl-* components come from jvl-steel-blue.css.
+   Every --tui-* variable is overwritten from config.lua (Config.Style / Margins / Icon / Animation). */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100vw; height: 100vh; overflow: hidden; background: transparent; }
+
+:root {
+    --tui-acento: #38bdf8;
+    --tui-texto: #eef3f9;
+    --tui-fuente: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    --tui-tamano: 13.5px;
+    --tui-peso: 500;
+    --tui-borde: 2px;
+    --tui-radio: 11px;
+    --tui-min: 180px;
+    --tui-max: 420px;
+    --tui-relleno: 10px 16px 10px 10px;
+    --tui-icono: 32px;
+    --tui-lado: 24px;
+    --tui-arriba: 4%;
+    --tui-abajo: 6%;
+    --tui-duracion: 220ms;
+}
+
+/* Position wrapper (ox_lib names) */
+#textui { position: fixed; pointer-events: none; }
+#textui.left-center   { top: 50%; left: var(--tui-lado); transform: translateY(-50%); }
+#textui.right-center  { top: 50%; right: var(--tui-lado); transform: translateY(-50%); }
+#textui.top-center    { top: var(--tui-arriba); left: 50%; transform: translateX(-50%); }
+#textui.bottom-center { bottom: var(--tui-abajo); left: 50%; transform: translateX(-50%); }
+#textui.top-left      { top: var(--tui-arriba); left: var(--tui-lado); }
+#textui.top-right     { top: var(--tui-arriba); right: var(--tui-lado); }
+#textui.bottom-left   { bottom: var(--tui-abajo); left: var(--tui-lado); }
+#textui.bottom-right  { bottom: var(--tui-abajo); right: var(--tui-lado); }
+#textui.center        { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* The prompt card */
+.caja {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: var(--tui-min);
+    max-width: var(--tui-max);
+    padding: var(--tui-relleno);
+    font-family: var(--tui-fuente);
+    color: var(--tui-texto);
+    background:
+        radial-gradient(120% 60% at 85% -10%, rgba(233, 238, 245, 0.08), transparent 45%),
+        var(--jvl-fondo-translucido);
+    border: var(--tui-borde) solid var(--jvl-borde-fuerte);
+    border-radius: var(--tui-radio);
+    box-shadow: var(--jvl-sombra), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity var(--tui-duracion) ease, transform var(--tui-duracion) ease;
+}
+#textui.solido .caja { background: radial-gradient(120% 60% at 85% -10%, rgba(233, 238, 245, 0.10), transparent 45%), linear-gradient(180deg, #0d1520, var(--jvl-panel)); }
+#textui.barra .caja { border-left: 3px solid var(--tui-acento); }
+#textui.brillo .caja { box-shadow: var(--jvl-sombra), 0 14px 30px -20px var(--tui-acento), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+#textui.mayusculas .texto { text-transform: uppercase; letter-spacing: 0.6px; }
+
+#textui.linea .caja::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 2%, var(--jvl-marino) 15%, var(--jvl-azul) 32%, var(--jvl-plata-clara) 44%, var(--tui-acento) 55%, transparent 92%);
+    filter: drop-shadow(0 0 4px var(--tui-acento));
+}
+
+/* Enter animations (Config.Animation.type) */
+#textui.anim-slide.left-center .caja, #textui.anim-slide.top-left .caja, #textui.anim-slide.bottom-left .caja { transform: translateX(-12px); }
+#textui.anim-slide.right-center .caja, #textui.anim-slide.top-right .caja, #textui.anim-slide.bottom-right .caja { transform: translateX(12px); }
+#textui.anim-slide.top-center .caja, #textui.anim-slide.bottom-center .caja, #textui.anim-slide.center .caja { transform: translateY(8px); }
+#textui.anim-scale .caja { transform: scale(0.94); }
+#textui.anim-none .caja { transition: none; }
+#textui.visible .caja { opacity: 1; transform: none; }
+
+.icono { width: var(--tui-icono); height: var(--tui-icono); flex-shrink: 0; font-size: calc(var(--tui-icono) * 0.44); color: var(--tui-acento); }
+.icono.oculto { display: none; }
+
+.texto { font-size: var(--tui-tamano); font-weight: var(--tui-peso); line-height: 1.55; letter-spacing: 0.2px; }
+.texto strong { font-weight: 700; color: var(--jvl-plata-clara); }
+
+/* [E] -> key cap (Config.KeyCaps.style) */
+.tecla {
+    display: inline-grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    margin: 0 2px;
+    border-radius: 7px;
+    font-size: calc(var(--tui-tamano) * 0.85);
+    font-weight: 700;
+    text-transform: none;
+    vertical-align: middle;
+    color: #04121f;
+    background: linear-gradient(180deg, var(--jvl-plata-clara), var(--jvl-plata));
+    box-shadow: 0 0 10px -2px var(--tui-acento), inset 0 1px 0 #fff;
+}
+#textui.tecla-blue .tecla { color: #fff; background: linear-gradient(180deg, var(--tui-acento), var(--jvl-azul-profundo)); box-shadow: 0 0 10px -2px var(--tui-acento), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+#textui.tecla-outline .tecla { color: var(--tui-acento); background: rgba(4, 7, 12, 0.6); box-shadow: inset 0 0 0 2px var(--tui-acento); }
