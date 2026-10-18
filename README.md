@@ -16,7 +16,7 @@
 **Interaction prompts ("[E] Open the garage") for FiveM in JVL Steel Blue.**
 Same idea as ox_lib's `lib.showTextUI`, with key caps, the player's own language and almost everything configurable.
 
-[Features](#-features) · [How it works](#-how-it-works) · [Installation](#-installation) · [API](#-api) · [Commands](#-commands) · [Pending](#-pending) · [License](#-license)
+[Features](#-features) · [How it works](#-how-it-works) · [Installation](#-installation) · [API](#-api) · [Commands](#-commands) · [License](#-license)
 
 </div>
 
@@ -169,10 +169,6 @@ TriggerClientEvent('jvl_textui:show', source, '[E] Talk', { duration = 4000 }) -
 | `/textui hide` | Hides the current prompt |
 | `/textui position <name>` | Moves your prompt (saved; needs `Config.PlayersCanMove`) |
 | `/textui lang` | Prints the detected language |
-
-## 📋 Pending
-
-- [x] In-game screenshots.
 
 ---
 
